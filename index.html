@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cool Solar System</title>
     <style>
         body {
             margin: 0;
@@ -8,76 +11,111 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: black;
+            background-color: #000000;
             overflow: hidden;
         }
-        .container {
-            font-size: 10px;
-            width: 40em;
-            height: 40em;
+
+        .solar-system {
+            width: 600px;
+            height: 600px;
             position: relative;
         }
+
         .sun {
-           position: absolute;
-           top: 15em;
-           left: 15em;
-           width: 10em;
-           height: 10em;
-           background-color: yellow;
-           border-radius: 50%;
-           box-shadow: 0 0 3em white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            box-shadow: 0 0 60px #fdb813;
+            background-color: #fdb813;
+            transform: translate(-50%, -50%);
         }
-       .earth,.moon {
-           position: absolute;
-           border-style: solid;
-           border-color: white transparent transparent transparent;
-           border-width: 0.1em 0.1em 0 0;
-           border-radius: 50%;
-       }
-       .earth {
-         top: 5em;
-         left: 5em;
-         width: 30em;
-         height: 30em;
-         animation: orbit 36.5s linear infinite;
-       }
-       .moon {
-         top: 0;
-         right: 0;
-         width: 8em;
-         animation: orbit 2.7s linear infinite;
-       }
-      .earth::before,.moon::before {
-        content: '';
-        position: absolute;
-        border-radius: 50%;
-      }
-      .earth::before {
-        top: 2.8em;
-        right: 2.8em;
-        width: 3em;
-        height: 3em;
-        background-color: aqua;
-      }
-      .moon::before {
-        top: 0.8em;
-        right: 0.2em;
-        width: 1.2em;
-        height: 1.2em;
-        background-color: silver;
-      }
-      @keyframes orbit {
-        to {
-          transforming: rotate(360deg);
+
+        .planet {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
         }
-      }
-</style>
+
+        .planet::before {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .planet:hover::before {
+            box-shadow: 0 0 20px #fff;
+        }
+
+        .mercury {
+            width: 100px;
+            height: 100px;
+            animation: orbit 7s linear infinite;
+        }
+
+        .mercury::before {
+            width: 8px;
+            height: 8px;
+            background-color: #b6bac5;
+        }
+
+        .venus {
+            width: 150px;
+            height: 150px;
+            animation: orbit 18s linear infinite;
+        }
+
+        .venus::before {
+            width: 15px;
+            height: 15px;
+            background-color: #e7cdcd;
+        }
+
+        .earth {
+            width: 200px;
+            height: 200px;
+            animation: orbit 30s linear infinite;
+        }
+
+        .earth::before {
+            width: 16px;
+            height: 16px;
+            background-color: #6b93d6;
+        }
+
+        .mars {
+            width: 250px;
+            height: 250px;
+            animation: orbit 56s linear infinite;
+        }
+
+        .mars::before {
+            width: 12px;
+            height: 12px;
+            background-color: #c1440e;
+        }
+
+        @keyframes orbit {
+            from {
+                transform: rotate(0deg) translateX(50%) rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg) translateX(50%) rotate(-360deg);
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-       <div class="sun"></div>
-       <div class="earth"></div>
-       <div class="moon"></div>
-  </div>
+    <div class="solar-system">
+        <div class="sun"></div>
+        <div class="planet mercury"></div>
+        <div class="planet venus"></div>
+        <div class="planet earth"></div>
+        <div class="planet mars"></div>
+    </div>
 </body>
 </html>
